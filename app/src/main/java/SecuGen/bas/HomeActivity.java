@@ -4,6 +4,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.icu.util.Calendar;
 import android.os.Environment;
 import android.os.Message;
 import android.os.StrictMode;
@@ -37,6 +38,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Locale;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -97,7 +99,7 @@ public class HomeActivity extends Activity implements View.OnClickListener, java
     EditText EmailInp;
 
 
-    Button registerBtn,choose,upload;
+    Button registerBtn,choose,upload,mail;
     EditText Name, Amt;
     TextView hi;
     String nameStr,registeredFpTemplate,TemplateComparisonInput, name,amount;
@@ -183,6 +185,7 @@ public class HomeActivity extends Activity implements View.OnClickListener, java
         regBtn = (Button) findViewById(R.id.regBtn);
         //cost = (EditText) findViewById(R.id.cost);
         EmailInp=(EditText) findViewById(R.id.regNumHome);
+        mail=(Button) findViewById(R.id.mail);
 
         nameTV = (TextView) findViewById(R.id.textViewName);
         hi=(TextView) findViewById(R.id.hi);
@@ -248,13 +251,13 @@ public class HomeActivity extends Activity implements View.OnClickListener, java
 
         @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy");
         Date now = new Date();
-        String fileName = formatter.format(now) + "_ATTENDANCE.txt";//like 2016_01_12.txt
+        final String fileName = formatter.format(now) + "_ATTENDANCE.txt";//like 2016_01_12.txt
 
         //Log.d(TAG, "onClick: "+fileName);
 
 
         //Storing values to txt file
-        File file = new File (path+fileName);
+        final File file = new File (path+fileName);
 
         DateFormat dateFormat = new SimpleDateFormat("hh.mm aa");
         String dateString = dateFormat.format(new Date()).toString();
@@ -301,6 +304,8 @@ public class HomeActivity extends Activity implements View.OnClickListener, java
                 }
                 else {
                     SUBMITFLAG=1;
+
+                    Toast.makeText(HomeActivity.this,"Please wait...",Toast.LENGTH_SHORT).show();
 
                     Year = spinnerYear.getSelectedItem().toString();
                     Dept  = spinnerDept.getSelectedItem().toString();
@@ -388,50 +393,68 @@ public class HomeActivity extends Activity implements View.OnClickListener, java
 //                    startActivity(intent);
 
 
+                    Calendar now = Calendar.getInstance();
+
+                    int hour = now.get(Calendar.HOUR_OF_DAY); // Get hour in 24 hour format
+                    int minute = now.get(Calendar.MINUTE);
+
+                    Date date = parseDate(hour + ":" + minute);
+//                    Date dateCompareOne = parseDate("08:00");
+//                    Date dateCompareTwo = parseDate("20:00");
 
 
-
-                    //Setting date as file name
-                    @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy");
-                    Date now = new Date();
-                    String fileName = formatter.format(now) + "_ATTENDANCE.txt";//like 2016_01_12.txt
-
-                    Log.d(TAG, "onClick: "+fileName);
-
-
-                    //Storing values to txt file
-                    File file = new File (path+fileName);
-
-                    DateFormat dateFormat = new SimpleDateFormat("hh.mm aa");
-                    String dateString = dateFormat.format(new Date()).toString();
-                    Log.d(TAG, "SEEEEE "+dateString);
-
-                    String Date;
-
-                    String write = Year+" "+Dept+" "+Sec+" "+amount+" "+name+" "+dateString;
-                    Log.d(TAG, "SEEE2 "+write);
-                    try
-                    {
-                        //String filename= "MyFile.txt";
-                        FileWriter fw = new FileWriter(file,true); //the true will append the new data
-                        fw.write(write+"\n");//appends the string to the file
-                        fw.close();
+                    if (parseDate("08:15").before( date ) && parseDate("08:49").after(date) ||
+                            parseDate("09:00").before( date ) && parseDate("09:40").after(date) ||
+                            parseDate("10:10").before( date ) && parseDate("10:49").after(date) ||
+                            parseDate("11:00").before( date ) && parseDate("11:39").after(date) ||
+                            parseDate("12:40").before( date ) && parseDate("13:19").after(date) ||
+                            parseDate("13:30").before( date ) && parseDate("14:09").after(date) ||
+                            parseDate("14:20").before( date ) && parseDate("15:00").after(date)
+                           /*|| parseDate("01:00").before( date ) && parseDate("02:00").after(date)*/) {
+                        Toast.makeText(HomeActivity.this,"ATTENDANCE CLOSED for this hour",Toast.LENGTH_SHORT).show();
                     }
-                    catch(IOException ioe)
-                    {
-                        System.err.println("IOException: " + ioe.getMessage());
-                    }
+//                    else if(parseDate("15:30").before( date ) && parseDate("23:59").after(date) ||
+//                            parseDate("00:01").before( date ) && parseDate("07:59").after(date)){
+//                        Toast.makeText(HomeActivity.this,"After college hours",Toast.LENGTH_SHORT).show();
+//                    }
+                    else {
 
 
-                    EmailInp.setText("");
-                    mImageViewFingerprint.setImageBitmap(grayBitmap );
-                    nameTV.setText("");
-                    amountTV.setText("");
-                    hi.setText("Next Please");
+                        //Setting date as file name
+                        @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy");
+                        Date now1 = new Date();
+                        String fileName = formatter.format(now1) + "_ATTENDANCE.txt";//like 2016_01_12.txt
+
+                        Log.d(TAG, "onClick: " + fileName);
 
 
-                    Toast.makeText(HomeActivity.this,"Marked as Present",Toast.LENGTH_SHORT).show();
+                        //Storing values to txt file
+                        File file = new File(path + fileName);
 
+                        DateFormat dateFormat = new SimpleDateFormat("hh.mm aa");
+                        String dateString = dateFormat.format(new Date()).toString();
+                        Log.d(TAG, "SEEEEE " + dateString);
+
+                        String write = Year + " " + Dept + " " + Sec + " " + amount + " " + name + " " + dateString;
+                        Log.d(TAG, "SEEE2 " + write);
+                        try {
+                            //String filename= "MyFile.txt";
+                            FileWriter fw = new FileWriter(file, true); //the true will append the new data
+                            fw.write(write + "\n");//appends the string to the file
+                            fw.close();
+                        } catch (IOException ioe) {
+                            System.err.println("IOException: " + ioe.getMessage());
+                        }
+
+
+                        EmailInp.setText("");
+                        mImageViewFingerprint.setImageBitmap(grayBitmap);
+                        nameTV.setText("");
+                        amountTV.setText("");
+                        hi.setText("Next Please");
+
+
+                        Toast.makeText(HomeActivity.this, "Marked as Present", Toast.LENGTH_SHORT).show();
 
 
 //                    //String filename="contacts_sid.vcf";
@@ -461,14 +484,9 @@ public class HomeActivity extends Activity implements View.OnClickListener, java
 //                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // this will make such that when user returns to your app, your app is displayed, instead of the email app.
 //                    startActivity(intent);
 
-                    Log.d(TAG, "FFFFFF"+fileName);
-                    ShareViaEmail("BAS_ATTENDANCE",fileName,file);
-                    Log.d(TAG, "mail:sent");
-
-                    //Save(file,"HAHAHAHA");
 
 
-
+                        //Save(file,"HAHAHAHA");
 
 
 //                    String filename = "example.txt";
@@ -519,6 +537,7 @@ public class HomeActivity extends Activity implements View.OnClickListener, java
 //                        e.printStackTrace();
 //
 //                    }
+                    }
                 }
             }
         });
@@ -547,9 +566,36 @@ public class HomeActivity extends Activity implements View.OnClickListener, java
         });
 
 
+        //.....WORK....HERE
+
+        mail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Log.d(TAG, "FFFFFF" + fileName);
+
+
+                ShareViaEmail("BAS_ATTENDANCE", fileName, file);
+                Log.d(TAG, "mail:sent");
+            }
+        });
+
+
+
+
 
     }
 
+    private Date parseDate(String date) {
+
+        final String inputFormat = "HH:mm";
+        SimpleDateFormat inputParser = new SimpleDateFormat(inputFormat, Locale.US);
+        try {
+            return inputParser.parse(date);
+        } catch (java.text.ParseException e) {
+            return new Date(0);
+        }
+    }
 
     public void heading(File file, String data) {
         try {
@@ -750,7 +796,7 @@ public class HomeActivity extends Activity implements View.OnClickListener, java
             myFile.createNewFile();
             FileOutputStream fOut = new FileOutputStream(myFile);
             fOut.write(buffer,0,buffer.length);
-            Toast.makeText(HomeActivity.this,"Downloaded",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(HomeActivity.this,"Downloaded",Toast.LENGTH_SHORT).show();
             fOut.close();
         } catch (Exception e) {
             Log.d("D","Exception when writing file" + fileName);
