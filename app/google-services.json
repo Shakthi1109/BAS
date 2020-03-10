@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "99954048323",
+    "firebase_url": "https://bas-440e7.firebaseio.com",
+    "project_id": "bas-440e7",
+    "storage_bucket": "bas-440e7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:99954048323:android:680e77fed9f4fe604503f6",
+        "android_client_info": {
+          "package_name": "SecuGen.bas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "99954048323-fhojrm2t08s31dk02eag28eu0a6ba459.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCH91vq1oJORPp1FDPOW1gbBbl-Pw01kkY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "99954048323-fhojrm2t08s31dk02eag28eu0a6ba459.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

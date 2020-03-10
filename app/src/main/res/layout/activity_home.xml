@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="SecuGen.bas.HomeActivity">
+
+    <Spinner
+        android:id="@+id/spinnerYearHome"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="25dp"
+        android:layout_x="28dp"
+        android:layout_y="8dp"
+        android:background="@drawable/circular_background_no_fill"
+        android:ems="10"
+        android:entries="@array/YEAR"
+        android:gravity="center_vertical|center_horizontal"
+        android:hint="Year"
+        android:padding="8dp"
+        tools:layout_editor_absoluteX="67dp"
+        tools:layout_editor_absoluteY="83dp" />
+
+    <Spinner
+        android:id="@+id/spinnerDeptHome"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="25dp"
+        android:layout_x="143dp"
+        android:layout_y="8dp"
+        android:background="@drawable/circular_background_no_fill"
+        android:ems="10"
+        android:entries="@array/DEPT"
+        android:gravity="center_vertical|center_horizontal"
+        android:hint="Dept"
+        android:padding="8dp"
+        tools:layout_editor_absoluteX="67dp"
+        tools:layout_editor_absoluteY="83dp" />
+
+    <Spinner
+        android:id="@+id/spinnerSectionHome"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="25dp"
+        android:layout_x="261dp"
+        android:layout_y="9dp"
+        android:background="@drawable/circular_background_no_fill"
+        android:ems="10"
+        android:gravity="center_vertical|center_horizontal"
+        android:hint="SEC"
+        android:padding="8dp"
+        tools:layout_editor_absoluteX="67dp"
+        tools:layout_editor_absoluteY="83dp" />
+
+    <Button
+        android:id="@+id/nextbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/regBtn"
+        android:layout_alignBottom="@+id/regBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_x="146dp"
+        android:layout_y="499dp"
+        android:background="@drawable/circular_background"
+        android:text="VALIDATE"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/regBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="26dp"
+        android:layout_marginEnd="19dp"
+        android:layout_x="274dp"
+        android:layout_y="134dp"
+        android:background="@drawable/circular_background"
+        android:text="Register"
+        android:textColor="#ffffff"
+        tools:layout_editor_absoluteX="246dp"
+        tools:layout_editor_absoluteY="431dp" />
+
+    <TextView
+        android:id="@+id/textViewName"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignBaseline="@+id/textViewAmount"
+        android:layout_alignBottom="@+id/textViewAmount"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="25dp"
+        android:layout_toStartOf="@+id/emailInput"
+        android:layout_x="0dp"
+        android:layout_y="390dp"
+
+        android:background="@drawable/circular_background_no_fill"
+        android:ems="10"
+        android:gravity="center"
+        android:padding="8dp"
+        tools:layout_editor_absoluteX="80dp"
+        tools:layout_editor_absoluteY="188dp" />
+
+    <TextView
+        android:id="@+id/textViewAmount"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_above="@+id/regBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="75dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="25dp"
+        android:layout_toEndOf="@+id/emailInput"
+        android:layout_x="0dp"
+        android:layout_y="442dp"
+
+        android:background="@drawable/circular_background_no_fill"
+        android:ems="10"
+        android:gravity="center"
+        android:padding="8dp"
+        tools:layout_editor_absoluteX="80dp"
+        tools:layout_editor_absoluteY="188dp" />
+
+    <ImageView
+        android:id="@+id/imageViewPayment"
+        android:layout_width="173dp"
+        android:layout_height="132dp"
+        android:layout_alignBottom="@+id/textViewName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="29dp"
+        android:layout_x="102dp"
+        android:layout_y="199dp"
+        android:contentDescription="@string/fingerprint_capture_image"
+        android:src="@drawable/pficon" />
+
+    <!--<TextView-->
+        <!--android:id="@+id/textViewTemplate"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_below="@+id/textViewAmount"-->
+        <!--android:layout_marginTop="12dp"-->
+        <!--android:text="template" />-->
+
+    <Button
+        android:id="@+id/buttonRetrive"
+        android:layout_width="76dp"
+        android:layout_height="wrap_content"
+        android:layout_x="22dp"
+        android:layout_y="497dp"
+        android:background="@drawable/circular_background"
+        android:text="SUBMIT"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/scanFpBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageViewPayment"
+        android:layout_marginBottom="20dp"
+        android:textColor="#ffffff"
+        android:layout_x="146dp"
+        android:layout_y="135dp"
+        android:background="@drawable/circular_background"
+        android:text="Scan"/>
+
+    <Button
+        android:id="@+id/buttonLedOnPayment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#ffffff"
+        android:layout_x="19dp"
+        android:layout_y="134dp"
+        android:background="@drawable/circular_background"
+        android:text="LED"/>
+
+    <EditText
+        android:id="@+id/regNumHome"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="25dp"
+        android:layout_x="0dp"
+        android:layout_y="68dp"
+        android:background="@drawable/circular_background_no_fill"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Reg Num (last 3 digits)"
+        android:inputType="number"
+        android:padding="8dp"
+        tools:layout_editor_absoluteX="80dp"
+        tools:layout_editor_absoluteY="188dp" />
+
+    <TextView
+        android:id="@+id/hi"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="25dp"
+        android:layout_x="0dp"
+        android:layout_y="338dp"
+        android:background="@drawable/circular_background_no_fill"
+        android:ems="10"
+        android:gravity="center"
+
+        android:padding="8dp"
+        tools:layout_editor_absoluteX="80dp"
+        tools:layout_editor_absoluteY="188dp" />
+
+    <Button
+        android:id="@+id/paybtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="276dp"
+        android:layout_y="499dp"
+        android:background="@drawable/circular_background"
+        android:text="ATTENDANCE"
+        android:textColor="#ffffff"
+        tools:layout_editor_absoluteX="268dp"
+        tools:layout_editor_absoluteY="443dp" />
+
+</AbsoluteLayout>
