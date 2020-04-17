@@ -403,21 +403,21 @@ public class HomeActivity extends Activity implements View.OnClickListener, java
 //                    Date dateCompareTwo = parseDate("20:00");
 
 
-                    if (parseDate("08:15").before( date ) && parseDate("08:49").after(date) ||
+                   /* if (parseDate("08:15").before( date ) && parseDate("08:49").after(date) ||
                             parseDate("09:00").before( date ) && parseDate("09:40").after(date) ||
-                            parseDate("10:10").before( date ) && parseDate("10:49").after(date) ||
+                            parseDate("10:10").before( date ) && parseDate("10:20").after(date) ||
                             parseDate("11:00").before( date ) && parseDate("11:39").after(date) ||
                             parseDate("12:40").before( date ) && parseDate("13:19").after(date) ||
                             parseDate("13:30").before( date ) && parseDate("14:09").after(date) ||
                             parseDate("14:20").before( date ) && parseDate("15:00").after(date)
-                           /*|| parseDate("01:00").before( date ) && parseDate("02:00").after(date)*/) {
+                           || parseDate("01:00").before( date ) && parseDate("02:00").after(date)) {
                         Toast.makeText(HomeActivity.this,"ATTENDANCE CLOSED for this hour",Toast.LENGTH_SHORT).show();
-                    }
+                    } */
 //                    else if(parseDate("15:30").before( date ) && parseDate("23:59").after(date) ||
 //                            parseDate("00:01").before( date ) && parseDate("07:59").after(date)){
 //                        Toast.makeText(HomeActivity.this,"After college hours",Toast.LENGTH_SHORT).show();
 //                    }
-                    else {
+                    //else {
 
 
                         //Setting date as file name
@@ -539,7 +539,7 @@ public class HomeActivity extends Activity implements View.OnClickListener, java
 //                    }
                     }
                 }
-            }
+            //}  //for time based (remove it)
         });
 //
 //        nextbtn.setOnClickListener(new View.OnClickListener() {

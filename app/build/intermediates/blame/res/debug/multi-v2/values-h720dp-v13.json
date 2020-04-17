@@ -1,6 +1,21 @@
 {
     "logs": [
         {
+            "outputFile": "D:\\Desktop\\SHAKTHI\\COLLEGE\\HACKATHON\\SMART SRM IOT COE\\BAS working model\\SecuGenUSBDist\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-h720dp-v13\\values-h720dp-v13.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\SHAKTHI\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\9d7d502b734d6f2f86e524e9a4ff4263\\res\\values-h720dp-v13\\values-h720dp-v13.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "66",
+                        "endOffsets": "117"
+                    }
+                }
+            ]
+        },
+        {
             "outputFile": "D:\\Desktop\\BAS DEMO\\SecuGenUSBDist\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-h720dp-v13\\values-h720dp-v13.xml",
             "map": [
                 {
